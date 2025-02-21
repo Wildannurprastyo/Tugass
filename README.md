@@ -1,18 +1,36 @@
-1. Deklarasi Variabel:
+1. Mengimpor Scanner
+import java.util.Scanner;
+Fungsi: Mengimpor kelas Scanner dari pustaka java.util, yang digunakan untuk membaca input dari pengguna.
+2. Deklarasi Kelas
+public class Kpl1_UAS;
+3. Metode main (Program Utama)
+public static void main(String[] args) {
+public → Bisa diakses dari luar kelas.
+static → Dapat dijalankan tanpa membuat objek dari kelas.
+void → Tidak mengembalikan nilai (tidak ada return).
+main → Metode utama yang dieksekusi pertama kali.
+String[] args → Parameter array untuk menerima input dari command line (tidak digunakan di sini).
+4. Membuat Objek Scanner
+Scanner input = new Scanner(System.in);
+Scanner → Kelas untuk membaca input dari keyboard.
+input → Nama variabel yang digunakan untuk Scanner.
+new Scanner(System.in) → Membuat objek Scanner yang membaca input dari keyboard (System.in).
+5. Deklarasi Array dan Variabel
 String[] namaMahasiswa = new String[100];
 String[] nimMahasiswa = new String[100];
 String[] jenisPrestasi = new String[100];
 String[] tingkatPrestasi = new String[100];
 int[] tahunPrestasi = new int[100];
 int prestasiCount = 0;
-Variabel-variabel di atas digunakan untuk menyimpan informasi mengenai mahasiswa dan prestasi mereka:
-namaMahasiswa[] : //Menyimpan nama mahasiswa.
-nimMahasiswa[] : //Menyimpan NIM mahasiswa.
-jenisPrestasi[] : //Menyimpan jenis prestasi yang diperoleh.
-tingkatPrestasi[] : //Menyimpan tingkat prestasi (Lokal, Nasional, Internasional).
-tahunPrestasi[] : //Menyimpan tahun prestasi diraih.
-prestasiCount : //Menyimpan jumlah prestasi yang sudah dimasukkan, digunakan untuk melacak jumlah data yang dimasukkan.
-2. Menu Utama:
+int pilihan;
+String[] namaMahasiswa = new String[100]; → Array untuk menyimpan nama mahasiswa.
+String[] nimMahasiswa = new String[100]; → Array untuk menyimpan NIM mahasiswa.
+String[] jenisPrestasi = new String[100]; → Array untuk menyimpan jenis prestasi.
+String[] tingkatPrestasi = new String[100]; → Array untuk menyimpan tingkat prestasi.
+int[] tahunPrestasi = new int[100]; → Array untuk menyimpan tahun prestasi (dalam angka).
+int prestasiCount = 0; → Variabel untuk menghitung jumlah data prestasi.
+int pilihan; → Variabel untuk menyimpan pilihan menu dari pengguna.
+6. Menampilkan Menu dengan do-while
 do {
     System.out.println("=== PENCATATAN PRESTASI MAHASISWA ===");
     System.out.println("1. Tambah Prestasi Mahasiswa");
@@ -22,77 +40,81 @@ do {
     System.out.print("Pilih menu: ");
     pilihan = input.nextInt();
     input.nextLine();
-//Program menampilkan menu dengan pilihan sebagai berikut:
-Tambah Prestasi Mahasiswa: Menambahkan prestasi mahasiswa baru.
-Tampilkan Daftar Prestasi: Menampilkan daftar prestasi yang sudah dimasukkan.
-Analisis Prestasi Berdasarkan Jenis: Menampilkan prestasi berdasarkan jenis prestasi yang dimasukkan.
-Keluar: Keluar dari program.
-3. Case 1 - Tambah Prestasi Mahasiswa:
-if (prestasiCount >= 100) { 
-    System.out.println("Jumlah prestasi telah mencapai batas maksimal."); 
-    break; 
-} 
-
-System.out.print("Nama Mahasiswa: "); 
-namaMahasiswa[prestasiCount] = input.nextLine(); 
-System.out.print("NIM: "); 
-nimMahasiswa[prestasiCount] = input.nextLine(); 
-System.out.print("Jenis Prestasi: "); 
-jenisPrestasi[prestasiCount] = input.nextLine(); 
-while (true) { 
-    System.out.print("Tingkat Prestasi (Lokal, Nasional, Internasional): "); 
-    tingkatPrestasi[prestasiCount] = input.nextLine(); 
-    if (tingkatPrestasi[prestasiCount].equalsIgnoreCase("Lokal") || 
-    tingkatPrestasi[prestasiCount].equalsIgnoreCase("Nasional") || 
-    tingkatPrestasi[prestasiCount].equalsIgnoreCase("Internasional")) {
-        break; 
-    } else { 
-        System.out.println("Input tidak valid. Harap masukkan salah satu dari: Lokal, Nasional, Internasional."); 
-    } 
-}
-while (true) { 
-    System.out.print("Tahun Prestasi (2010 hingga tahun saat ini): "); 
-    int tahun = input.nextInt(); 
-    input.nextLine(); 
-    if (tahun >= 2010 && tahun <= 2024) { 
-        tahunPrestasi[prestasiCount] = tahun; 
-        break; 
-    } else { 
-        System.out.println("Input tidak valid. Harap masukkan tahun antara 2010 hingga tahun saat ini."); 
-    } 
-}
-
-prestasiCount++; 
-System.out.println("Prestasi berhasil ditambahkan!");
-//Pada pilihan pertama, program meminta input data prestasi mahasiswa: nama, NIM, jenis prestasi, tingkat prestasi (Lokal, Nasional, Internasional), dan tahun prestasi.
-Ada pengecekan untuk memastikan tingkat prestasi hanya dapat diisi dengan "Lokal", "Nasional", atau "Internasional".
-Selain itu, tahun prestasi harus berada dalam rentang tahun 2010 hingga 2024.
-Setelah data berhasil dimasukkan, prestasiCount akan bertambah dan data prestasi akan disimpan di array.
-4. Case 2 - Tampilkan Daftar Prestasi:
-if (prestasiCount > 0) {
-    System.out.println("=== DAFTAR SEMUA PRESTASI ==="); 
-    for (int i = 0; i < prestasiCount; i++) { 
-        System.out.println("Nama: " + namaMahasiswa[i] + "| NIM: " + nimMahasiswa[i] + "| Jenis: " + jenisPrestasi[i] + "| Tingkat: " + tingkatPrestasi[i] + "| Tahun: " + tahunPrestasi[i]); 
+do { ... } while (pilihan != 4); → Perulangan agar menu terus muncul sampai pengguna memilih keluar (4).
+System.out.println(...) → Menampilkan menu pilihan di layar.
+System.out.print("Pilih menu: "); → Meminta pengguna memasukkan angka menu.
+pilihan = input.nextInt(); → Membaca input angka dari pengguna.
+input.nextLine(); → Menghindari bug input agar tidak loncat.
+7. Pilihan 1: Tambah Data Prestasi
+case 1:
+    if (prestasiCount >= 100) { 
+        System.out.println("Data sudah penuh!");
+        break;
     }
-} else {
-    System.out.println("belum ada data prestasi");
-}                  
-//Pada pilihan kedua, program akan menampilkan semua prestasi yang telah dimasukkan.
-Jika belum ada prestasi yang dimasukkan, program akan menampilkan pesan "belum ada data prestasi."
-5. Case 3 - Analisis Prestasi Berdasarkan Jenis:
-System.out.print("Masukkan jenis prestasi yang ingin dianalisis: "); 
-String jenis = input.nextLine(); 
-System.out.println("=== ANALSIS PRESTASI ==="); 
-for (int i = 0; i < prestasiCount; i++) { 
-    if (jenisPrestasi[i].equalsIgnoreCase(jenis)) { 
-        System.out.println("Nama: " + namaMahasiswa[i] + "| NIM: " + nimMahasiswa[i] + "| Tingkat: " + tingkatPrestasi[i] + "| Tahun: " + tahunPrestasi[i]); 
-    } 
+    System.out.print("Masukkan Nama Mahasiswa: ");
+    namaMahasiswa[prestasiCount] = input.nextLine();
+    System.out.print("Masukkan NIM: ");
+    nimMahasiswa[prestasiCount] = input.nextLine();
+    System.out.print("Masukkan Jenis Prestasi: ");
+    jenisPrestasi[prestasiCount] = input.nextLine();
+    System.out.print("Masukkan Tingkat Prestasi: ");
+    tingkatPrestasi[prestasiCount] = input.nextLine();
+    System.out.print("Masukkan Tahun Prestasi: ");
+    tahunPrestasi[prestasiCount] = input.nextInt();
+    input.nextLine();
+    prestasiCount++;
+    System.out.println("Data berhasil ditambahkan!");
+    break;
+Jika data sudah mencapai 100, tampilkan pesan "Data sudah penuh!".
+Meminta input pengguna untuk Nama, NIM, Jenis Prestasi, Tingkat Prestasi, dan Tahun Prestasi.
+Menyimpan data ke dalam array masing-masing.
+Meningkatkan prestasiCount agar jumlah data bertambah.
+Menampilkan pesan "Data berhasil ditambahkan!".
+8. Pilihan 2: Tampilkan Daftar Prestasi
+case 2:
+    if (prestasiCount == 0) {
+        System.out.println("Belum ada data prestasi.");
+    } else {
+        System.out.println("=== DAFTAR PRESTASI ===");
+        for (int i = 0; i < prestasiCount; i++) {
+            System.out.println((i + 1) + ". " + namaMahasiswa[i] + " - " +
+                               nimMahasiswa[i] + " - " + jenisPrestasi[i] +
+                               " - " + tingkatPrestasi[i] + " - " + tahunPrestasi[i]);
+        }
+    }
+    break;
+
+Jika belum ada data, tampilkan "Belum ada data prestasi.".
+
+Jika ada data, tampilkan semua data dengan perulangan for.
+10. Pilihan 3: Analisis Prestasi Berdasarkan Jenis
+case 3:
+    if (prestasiCount == 0) {
+        System.out.println("Belum ada data prestasi.");
+    } else {
+        System.out.print("Masukkan jenis prestasi yang ingin dianalisis: ");
+        String cariJenis = input.nextLine();
+        int jumlah = 0;
+        for (int i = 0; i < prestasiCount; i++) {
+            if (jenisPrestasi[i].equalsIgnoreCase(cariJenis)) {
+                jumlah++;
+            }
+        }
+        System.out.println("Jumlah prestasi dengan jenis '" + cariJenis + "': " + jumlah);
+    }
+    break;
+Meminta pengguna memasukkan jenis prestasi yang ingin dihitung.
+Menggunakan perulangan for untuk menghitung jumlah prestasi dengan jenis yang dimasukkan.
+Menampilkan hasil jumlah prestasi berdasarkan jenis tersebut.
+11. Pilihan 4: Keluar dari Program
+case 4:
+    System.out.println("Terima kasih!");
+    break;
+default:
+    System.out.println("Pilihan tidak valid!");
 }
-//Pada pilihan ketiga, program meminta input jenis prestasi yang ingin dianalisis (misalnya "Lokal", "Nasional", atau "Internasional").
-Kemudian, program menampilkan semua prestasi yang memiliki jenis yang sama dengan input yang dimasukkan oleh pengguna.
-6. Case 4 - Keluar:
-System.out.println("Terima kasih!");
-//Pada pilihan keempat, program menampilkan pesan "Terima kasih!" dan kemudian keluar dari loop, menghentikan eksekusi program.
-7. Default - Pilihan Tidak Valid:
-System.out.println("Pilihan tidak valid. Silakan coba lagi.");
-//Jika pengguna memasukkan pilihan yang tidak ada di menu, program akan menampilkan pesan kesalahan dan meminta input ulang.
+Jika pengguna memilih 4, program keluar dengan pesan "Terima kasih!".
+Jika input tidak sesuai dengan menu, tampilkan "Pilihan tidak valid!".
+12. Menutup Scanner
+input.close();
+Menutup Scanner untuk menghindari kebocoran memori.
